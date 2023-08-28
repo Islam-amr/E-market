@@ -1,9 +1,21 @@
+import "reflect-metadata"
 import express from 'express'
+import DB from './utils/database'
+import dotenv from 'dotenv'
+import userRoute from './routes/user.route'
+
+dotenv.config();
 
 const app = express()
+const port = process.env.PORT;
 
-app.use('/', (req, res, next) => {
-    res.send('<h1>Hello node js</h1>')
-})
+app.use(express.json());
 
-app.listen(3000)
+app.use('/user', userRoute)
+
+app.listen(port, () => {
+    DB.initialize().then(() => console.log('Database connected'), (e) => {
+        console.log(e)
+        process.exit(1)
+    })
+});
