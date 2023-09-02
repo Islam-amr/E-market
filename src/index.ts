@@ -1,14 +1,12 @@
 import "reflect-metadata"
 import express from 'express'
 import DB from './utils/database'
-import dotenv from 'dotenv'
 import userRoute from './routes/user.route'
 import authRoute from './routes/auth.route'
-
-dotenv.config();
+import config from './config'
 
 const app = express()
-const port = process.env.PORT || 3000;
+const port = config.PORT;
 
 app.use(express.json());
 

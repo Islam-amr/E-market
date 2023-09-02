@@ -1,23 +1,9 @@
 import express from "express";
-
-type createUserParams = {
-    firstName: string
-    lastName: string
-    email: string
-    phone: string
-    address: string
-}
-
+import { login, register } from '../controllers/auth.controller'
 const router = express.Router()
 
-router.get('/register', (req, res, next) => {
-    return res.send('som3a said no')
-})
+router.post('/register', register)
 
-router.get('/login', (req, res, next) => {
-    const { email, password } = req.body
-    
-    return
-})
+router.post('/login', login)
 
 export default router

@@ -1,15 +1,13 @@
 import { DataSource } from "typeorm";
-import dotenv from 'dotenv'
-
-dotenv.config()
+import config from "../config";
 
 export default new DataSource({
     type: "mysql",
-    host: process.env.DB_HOST,
-    port: 3306,
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: config.DB_HOST,
+    port: config.DB_PORT,
+    username: config.DB_USERNAME,
+    password: config.DB_PASSWORD,
+    database: config.DB_NAME,
     synchronize: true,
     logging: false,
     entities: ["src/entities/**/*.ts"],
