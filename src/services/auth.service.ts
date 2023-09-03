@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { omit } from 'lodash'
 import { FindOptionsSelect } from 'typeorm';
+import config from '../config';
 
 type registerParams = {
     firstName: string
@@ -46,7 +47,7 @@ export const login = async (params: loginParams) => {
         if (!user || !passwordMatch) {
             throw new Error('Invalid email or password')
         }
-        const token = jwt.sign({ id: user.id }, 'E_MARKET_PRIVATE_KEY', { expiresIn: 60 * 60 });
+        const token = jwt.sign({ id: user.id }, config.JWT_PRIVATE_KEY as string, { expiresIn: 60 * 60 });
 
         return {
             user: omit(user, ['password']), token

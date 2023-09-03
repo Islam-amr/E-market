@@ -9,5 +9,5 @@ export default {
     DB_USERNAME: process.env.DB_USERNAME,
     DB_PASSWORD: process.env.DB_PASSWORD,
     DB_NAME: process.env.DB_NAME,
-    JWT_PRIVATE_KEY: process.env.E_MARKET_PRIVATE_KEY
+    JWT_PRIVATE_KEY: process.env.JWT_PRIVATE_KEY
 }

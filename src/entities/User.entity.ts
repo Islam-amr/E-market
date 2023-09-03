@@ -1,11 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, CreateDateColumn, UpdateDateColumn } from "typeorm"
 import { Product } from "./Product.entity"
-import { Exclude } from 'class-transformer'
 
 @Entity()
 export class User {
     @PrimaryGeneratedColumn('uuid')
-    id: number
+    id: string
 
     @Column()
     firstName: string
