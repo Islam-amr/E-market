@@ -1,13 +1,13 @@
 import express, { Request, Response, NextFunction } from 'express'
-import { createUser, deleteUser, editUser, getUser, getUsers } from '../controllers/user.controller'
+import { deleteUser, editUser, getUser, getUsers } from '../controllers/user.controller'
+import verifyToken from '../middlewares/verifyToken'
 
 const router = express.Router()
 
 router.get('/get-users', getUsers)
-router.get('/get-user/:userId', getUser)
-router.post('/create-user', createUser)
-router.put('/edit-user/:userId', editUser)
-router.delete('/delete-user/:userId', deleteUser)
+router.get('/get-user', getUser)
+router.put('/edit-user', editUser)
+router.delete('/delete-user', deleteUser)
 
 
 export default router
