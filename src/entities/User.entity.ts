@@ -1,9 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, CreateDateColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, CreateDateColumn, UpdateDateColumn } from "typeorm"
 import { Product } from "./Product.entity"
+import { Exclude } from 'class-transformer'
 
 @Entity()
 export class User {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number
 
     @Column()
@@ -15,6 +16,9 @@ export class User {
     @Column()
     email: string
 
+    @Column({ select: false })
+    password: string
+
     @Column()
     phone: string
 
@@ -23,6 +27,9 @@ export class User {
 
     @CreateDateColumn({ type: 'timestamp' })
     created_at: Date;
+
+    @UpdateDateColumn({ type: 'timestamp' })
+    updated_at: Date;
 
     @OneToMany(() => Product, (product) => product.seller)
     products: Product[];
