@@ -1,10 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm'
 import { User } from './User.entity'
 
 @Entity()
 export class Product {
-    @PrimaryGeneratedColumn()
-    id: number
+    @PrimaryGeneratedColumn('uuid')
+    id: string
 
     @Column()
     title: string
@@ -18,14 +18,17 @@ export class Product {
     @Column()
     quantity: number
 
-    @Column()
-    status: string
+    // @Column()
+    // status: string
 
     @Column()
     image: string
 
     @CreateDateColumn({ type: 'timestamp' })
-    created_at: Date;
+    created_at?: Date;
+
+    @UpdateDateColumn({ type: 'timestamp' })
+    updated_at?: Date;
     
     @ManyToOne(() => User, (user) => user.products)
     seller: User;
