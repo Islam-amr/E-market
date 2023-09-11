@@ -9,7 +9,7 @@ export default new DataSource({
     password: config.DB_PASSWORD,
     database: config.DB_NAME,
     synchronize: true,
-    logging: false,
+    logging: true,
     entities: ["src/entities/**/*.ts"],
     subscribers: [],
     migrations: [],
